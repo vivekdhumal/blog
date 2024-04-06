@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import 'dotenv/config'
 import userRoutes from "./routes/user.route.js"
-const port = 3000
+const port = process.env.BACKEND_PORT
 const app = express()
 
 mongoose.connect(process.env.MONGO)
