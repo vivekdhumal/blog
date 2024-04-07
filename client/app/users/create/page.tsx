@@ -1,6 +1,7 @@
-import { Breadcrumb, BreadcrumbItem, Button, Card, Checkbox, Label, Select, TextInput } from "flowbite-react";
+import { Breadcrumb, BreadcrumbItem, Button, Card, Label, Select, TextInput } from "flowbite-react";
+import { createUser } from "../actions";
 
-export default async function Page() {
+export default async function Page() {                                    
     return (
         <div className="overflow-x-auto">
             <div className="flex mb-4 justify-between items-center">
@@ -15,30 +16,30 @@ export default async function Page() {
             </Breadcrumb>
 
             <Card className="max-w-auto mt-4">
-                <form className="flex max-w-md flex-col gap-4">
+                <form action={createUser} className="flex max-w-md flex-col gap-4">
                     <div>
                         <div className="mb-2 block">
                         <Label htmlFor="name" value="Name" />
                         </div>
-                        <TextInput id="name" type="text" required />
+                        <TextInput id="name" name="name" type="text" required />
                     </div>
                     <div>
                         <div className="mb-2 block">
                         <Label htmlFor="email1" value="Email" />
                         </div>
-                        <TextInput id="email1" type="email" required />
+                        <TextInput id="email1" name="email" type="email" required />
                     </div>
                     <div>
                         <div className="mb-2 block">
                         <Label htmlFor="password1" value="Password" />
                         </div>
-                        <TextInput id="password1" type="password" required />
+                        <TextInput id="password1" name="password" type="password" required />
                     </div>
                     <div className="mb-4">
                         <div className="mb-2 block">
                         <Label htmlFor="isAdmin" value="is Admin?" />
                         </div>
-                        <Select id="isAdmin" required>
+                        <Select id="isAdmin" name="is_admin" required>
                             <option value="">-Select-</option>
                             <option value={'1'}>Yes</option>
                             <option value={'0'}>No</option>
