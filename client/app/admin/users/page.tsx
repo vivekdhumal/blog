@@ -22,7 +22,7 @@ return (
     <div className="overflow-x-auto">
       <div className="flex mb-4 justify-between items-center">
         <h1 className="text-2xl">Users</h1>
-        <Button outline pill href="/users/create">Add New</Button>
+        <Button outline pill href="/admin/users/create">Add New</Button>
       </div>
       <Table striped> 
         <TableHead>
@@ -43,8 +43,11 @@ return (
                     <TableCell>{user.email}</TableCell>
                     <TableCell>{user.isAdmin ? "Yes" : "No"}</TableCell>
                     <TableCell>
-                    <a href="#" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+                    <a href={`/admin/users/${user._id}/edit`} className="font-medium text-cyan-600 hover:underline dark:text-cyan-500 mr-6">
                         Edit
+                    </a>
+                    <a href="#" className="font-medium text-red-600 hover:underline dark:text-red-500">
+                        Delete
                     </a>
                     </TableCell>
                 </TableRow> 

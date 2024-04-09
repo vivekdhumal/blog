@@ -28,5 +28,34 @@ export async function createUser(formData: FormData) {
         console.log(error);
     }
 
-    redirect('/users');
+    redirect('/admin/users');
+}
+
+export async function updateUser(id: string, formData: FormData) {
+    try {
+        const rawFormData = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            is_admin: formData.get('is_admin')
+        }
+
+        const res = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL+"/users/"+id, {
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(rawFormData)
+        });
+
+        if(!res.ok) {
+            throw new Error('Failed to fetch data');
+        }
+
+        const data = await res.json();
+        // console.log(data);
+    } catch (error) {
+        console.log(error);
+    }
+
+    redirect('/admin/users');
 }

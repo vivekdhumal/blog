@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Sidebar, SidebarItems, SidebarItemGroup, ThemeModeScript, SidebarItem, SidebarLogo } from "flowbite-react";
-import { HiHome, HiUser } from "react-icons/hi";
+import { ThemeModeScript } from "flowbite-react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,32 +21,7 @@ export default function RootLayout({
         <ThemeModeScript />
       </head>
       <body className="bg-white">
-      <div className="flex">
-      <Sidebar aria-label="Default sidebar example" className="flex-none h-screen">
-      <SidebarLogo href="#" img="/favicon.ico" imgAlt="Flowbite logo">
-        Flowbite
-      </SidebarLogo>
-        <SidebarItems>
-          <SidebarItemGroup>
-            <SidebarItem href="/">
-              <div className="flex flex-wrap gap-2 items-center">
-              <HiHome/>
-              Dashboard
-              </div>
-            </SidebarItem>
-            <SidebarItem href="/users">
-              <div className="flex flex-wrap gap-2 items-center">
-              <HiUser/>
-              Manage Users
-              </div>
-            </SidebarItem>
-          </SidebarItemGroup>
-        </SidebarItems>
-      </Sidebar>
-        <div className="flex-auto pt-6 px-6">
         {children}
-        </div>
-      </div>
       </body>
     </html>
   );

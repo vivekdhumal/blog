@@ -14,6 +14,22 @@ export const getUsers = async(req, res, next) => {
     }
 }
 
+export const getUserById = async(req, res, next) => {
+    if(!req.params.userId) {
+        return res.status(412).json({message: "User id is missing"});
+    }
+
+    try {
+        const user = await User.findById(req.params.userId, {password: 0});
+
+        res.status(200).json({
+            user: user,
+        });
+    } catch (error) {
+        next(error);
+    }
+}
+
 export const createUser = async(req, res, next) => {
     const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
@@ -81,8 +97,9 @@ export const updateUser = async(req, res, next) => {
         user.email = req.body.email;
         user.isAdmin = req.body.is_admin;
         await user.save();
+        const { password, ...rest } = user._doc;
 
-        return res.status(200).json({message: "User updated", user: user});
+        return res.status(200).json({message: "User updated", user: rest});
     } catch (error) {
         next(error);
     }

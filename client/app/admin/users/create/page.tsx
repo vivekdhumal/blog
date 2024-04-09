@@ -8,10 +8,10 @@ export default async function Page() {
                 <h1 className="text-2xl">Users</h1>
             </div>
             <Breadcrumb aria-label="Default breadcrumb example" className="bg-gray-50 px-5 py-3 dark:bg-gray-800">
-                <BreadcrumbItem href="/">
+                <BreadcrumbItem href="/admin">
                     Home
                 </BreadcrumbItem>
-                <BreadcrumbItem href="/users">Users</BreadcrumbItem>
+                <BreadcrumbItem href="/admin/users">Users</BreadcrumbItem>
                 <BreadcrumbItem>Add New</BreadcrumbItem>
             </Breadcrumb>
 
@@ -19,25 +19,25 @@ export default async function Page() {
                 <form action={createUser} className="flex max-w-md flex-col gap-4">
                     <div>
                         <div className="mb-2 block">
-                        <Label htmlFor="name" value="Name" />
+                            <Label htmlFor="name" value="Name" />
                         </div>
                         <TextInput id="name" name="name" type="text" required />
                     </div>
                     <div>
                         <div className="mb-2 block">
-                        <Label htmlFor="email1" value="Email" />
+                            <Label htmlFor="email1" value="Email" />
                         </div>
                         <TextInput id="email1" name="email" type="email" required />
                     </div>
                     <div>
                         <div className="mb-2 block">
-                        <Label htmlFor="password1" value="Password" />
+                            <Label htmlFor="password1" value="Password" />
                         </div>
                         <TextInput id="password1" name="password" type="password" required />
                     </div>
                     <div className="mb-4">
                         <div className="mb-2 block">
-                        <Label htmlFor="isAdmin" value="is Admin?" />
+                            <Label htmlFor="isAdmin" value="is Admin?" />
                         </div>
                         <Select id="isAdmin" name="is_admin" required>
                             <option value="">-Select-</option>
