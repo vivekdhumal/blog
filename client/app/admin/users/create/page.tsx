@@ -9,14 +9,12 @@ export default async function Page() {
                 <h1 className="text-2xl">Users</h1>
             </div>
             <Breadcrumb aria-label="Default breadcrumb example" className="bg-gray-50 px-5 py-3 dark:bg-gray-800">
-                <BreadcrumbItem href="/admin">
-                    Home
-                </BreadcrumbItem>
                 <BreadcrumbItem href="/admin/users">Users</BreadcrumbItem>
                 <BreadcrumbItem>Add New</BreadcrumbItem>
             </Breadcrumb>
 
             <Card className="max-w-auto mt-4">
+                <h1 className="text-2xl">Add New</h1>
                 <form action={createUser} className="flex max-w-md flex-col gap-4">
                     <div>
                         <div className="mb-2 block">

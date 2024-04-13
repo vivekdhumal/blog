@@ -26,14 +26,12 @@ export default async function Page({params}: {params: {id: string}}) {
                 <h1 className="text-2xl">Users</h1>
             </div>
             <Breadcrumb aria-label="Default breadcrumb example" className="bg-gray-50 px-5 py-3 dark:bg-gray-800">
-                <BreadcrumbItem href="/admin">
-                    Home
-                </BreadcrumbItem>
                 <BreadcrumbItem href="/admin/users">Users</BreadcrumbItem>
                 <BreadcrumbItem>Edit</BreadcrumbItem>
             </Breadcrumb>
 
             <Card className="max-w-auto mt-4">
+                <h1 className="text-2xl">Edit</h1>
                 <form action={updateUserWithId} className="flex max-w-md flex-col gap-4">
                     <div>
                         <div className="mb-2 block">
