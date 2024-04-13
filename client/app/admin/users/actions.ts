@@ -1,5 +1,6 @@
 'use server'
 
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export async function createUser(formData: FormData) {
@@ -58,4 +59,25 @@ export async function updateUser(id: string, formData: FormData) {
     }
 
     redirect('/admin/users');
+}
+
+
+export async function deleteUser(id: string) {
+    try {
+        const res = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL+"/users/"+id, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        if(!res.ok) {
+            throw new Error('Failed to fetch data');
+        }
+
+        const data = await res.json();
+        // console.log(data);
+    } catch (error) {
+        console.log(error);
+    }
 }

@@ -20,7 +20,7 @@ export default function AdminLayout({
         <div className="flex">
             <Sidebar aria-label="Default sidebar example" className="flex-none h-screen">
                 <SidebarLogo href="/admin" img="/favicon.ico" imgAlt="Flowbite logo">
-                    Flowbite
+                    Blog
                 </SidebarLogo>
                 <SidebarItems>
                     <SidebarItemGroup>

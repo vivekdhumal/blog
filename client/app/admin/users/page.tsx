@@ -1,5 +1,7 @@
 import { Button, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from "flowbite-react";
 import { Suspense } from "react";
+import DeleteModal from "../components/DeleteModal";
+import { deleteUser } from "./actions";
 
 async function getUsers() {
     const res = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL+"/users",{cache:"no-store"});
@@ -46,9 +48,11 @@ return (
                     <a href={`/admin/users/${user._id}/edit`} className="font-medium text-cyan-600 hover:underline dark:text-cyan-500 mr-6">
                         Edit
                     </a>
-                    <a href="#" className="font-medium text-red-600 hover:underline dark:text-red-500">
+                    <DeleteModal url="sdsd" label="Delete" className="font-medium text-red-600 hover:underline dark:text-red-500"
+                    message="Do you really want to delete?" callback={async () => { 'use server'; deleteUser(user._id) }}/>
+                    {/* <a href="#" className="font-medium text-red-600 hover:underline dark:text-red-500">
                         Delete
-                    </a>
+                    </a> */}
                     </TableCell>
                 </TableRow> 
             ))}

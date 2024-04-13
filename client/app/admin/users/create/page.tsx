@@ -1,5 +1,6 @@
-import { Breadcrumb, BreadcrumbItem, Button, Card, Label, Select, TextInput } from "flowbite-react";
+import { Breadcrumb, BreadcrumbItem, Card, Label, Select, TextInput } from "flowbite-react";
 import { createUser } from "../actions";
+import SubmitButton from "../../components/SubmitButton";
 
 export default async function Page() {                                    
     return (
@@ -45,7 +46,7 @@ export default async function Page() {
                             <option value={'0'}>No</option>
                         </Select>
                     </div>
-                    <Button type="submit">Submit</Button>
+                    <SubmitButton/>
                 </form>
             </Card>
         </div>

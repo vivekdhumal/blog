@@ -1,5 +1,6 @@
 import { Breadcrumb, BreadcrumbItem, Button, Card, Label, Select, TextInput } from "flowbite-react";
 import { updateUser } from "../../actions";
+import SubmitButton from "@/app/admin/components/SubmitButton";
 
 async function getUserById(id: string) {
     const res = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL+"/users/"+id,{cache:"no-store"});
@@ -56,7 +57,7 @@ export default async function Page({params}: {params: {id: string}}) {
                             <option value={'0'}>No</option>
                         </Select>
                     </div>
-                    <Button type="submit">Submit</Button>
+                    <SubmitButton />
                 </form>
             </Card>
         </div>
