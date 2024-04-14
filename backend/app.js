@@ -1,8 +1,10 @@
 import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
-import 'dotenv/config'
-import userRoutes from "./routes/user.route.js"
+import 'dotenv/config';
+import userRoutes from "./routes/user.route.js";
+import authRoutes from "./routes/auth.route.js";
+
 const port = process.env.BACKEND_PORT
 const app = express()
 
@@ -19,7 +21,8 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
-app.use('/api/users', userRoutes)
+app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
 
 app.listen(port, () => {
     console.log(`app listening on port ${port}`)
