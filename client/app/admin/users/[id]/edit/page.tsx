@@ -1,9 +1,18 @@
+'use server';
+
 import { Breadcrumb, BreadcrumbItem, Button, Card, Label, Select, TextInput } from "flowbite-react";
 import { updateUser } from "../../actions";
 import SubmitButton from "@/app/admin/components/SubmitButton";
+import { userToken } from "@/app/admin/helper";
 
 async function getUserById(id: string) {
-    const res = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL+"/users/"+id,{cache:"no-store"});
+    const res = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL+"/users/"+id, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": await userToken(),
+        },
+    });
    
     if (!res.ok) {
       // This will activate the closest `error.js` Error Boundary

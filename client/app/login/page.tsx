@@ -4,11 +4,9 @@ import { auth } from "@/auth";
 import SubmitButton from "../admin/components/SubmitButton";
 
 export default async function Page() {
-    const session = await auth();
-
     return (
         <Card className="w-1/4">
-            <h3 className="text-xl text-center">Login {session?.user?.name}</h3>
+            <h3 className="text-xl text-center">Login</h3>
             <form action={authenticate} className="flex flex-col gap-4">
                 <div>
                     <div className="mb-2 block">

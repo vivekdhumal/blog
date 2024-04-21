@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
+import { cookies } from "next/headers";
 
 export const {handlers, auth, signIn, signOut} = NextAuth({
     providers: [
@@ -23,13 +24,13 @@ export const {handlers, auth, signIn, signOut} = NextAuth({
                     throw new Error("Something went wrong");
                 }
 
-                const { user: userData } = await response.json();
+                const { user: userData, token } = await response.json();
 
-                console.log(userData);
+                // console.log(userData);
+                cookies().set('user_token', token);
 
                 if(!userData) {
                     throw new Error("User not found");
-
                 }
 
                 user = userData;
@@ -37,5 +38,5 @@ export const {handlers, auth, signIn, signOut} = NextAuth({
                 return user;
             },
         })
-    ],
+    ]
 })

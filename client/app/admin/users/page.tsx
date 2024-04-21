@@ -2,9 +2,19 @@ import { Button, Card, Table, TableBody, TableCell, TableHead, TableHeadCell, Ta
 import { Suspense } from "react";
 import DeleteModal from "../components/DeleteModal";
 import { deleteUser } from "./actions";
+import { auth } from "@/auth";
+import { cookies } from "next/headers";
+import { userToken } from "../helper";
 
 async function getUsers() {
-    const res = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL+"/users",{cache:"no-store"});
+    const session = await auth();
+
+    const res = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL+"/users", {
+      method: 'GET',
+      headers: {
+        "Authorization": await userToken(),
+      }
+    });
    
     if (!res.ok) {
       // This will activate the closest `error.js` Error Boundary

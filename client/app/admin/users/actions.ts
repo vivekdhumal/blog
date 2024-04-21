@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { userToken } from "../helper";
 
 export async function createUser(formData: FormData) {
     try {
@@ -15,6 +16,7 @@ export async function createUser(formData: FormData) {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
+                "Authorization": await userToken(),
             },
             body: JSON.stringify(rawFormData)
         });
@@ -43,7 +45,8 @@ export async function updateUser(id: string, formData: FormData) {
         const res = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL+"/users/"+id, {
             method: 'PUT',
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": await userToken(),
             },
             body: JSON.stringify(rawFormData)
         });
@@ -67,7 +70,8 @@ export async function deleteUser(id: string) {
         const res = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL+"/users/"+id, {
             method: 'DELETE',
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": await userToken(),
             }
         });
 

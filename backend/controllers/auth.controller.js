@@ -24,7 +24,6 @@ export const login = async(req, res, next) => {
         }
 
         const tokenData = {
-            id: validUser._id,
             name: validUser.name,
             email: validUser.email
         };

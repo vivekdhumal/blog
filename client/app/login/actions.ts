@@ -1,5 +1,7 @@
 'use server'
 import { signIn, signOut } from "@/auth";
+import { cookies } from "next/headers";
+import { NextResponse } from "next/server";
 
 export async function authenticate(formData: FormData) {
     await signIn('credentials', {
@@ -10,6 +12,8 @@ export async function authenticate(formData: FormData) {
 }
 
 export async function logOut() {
+    cookies().delete('user_token');
+
     await signOut({
         redirectTo: '/login',
     });
