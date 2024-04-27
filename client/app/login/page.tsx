@@ -1,8 +1,7 @@
 'use client';
 
-import { Button, Card, Checkbox, Label, TextInput } from "flowbite-react";
+import { Card, Label, TextInput } from "flowbite-react";
 import { authenticate } from "./actions";
-import { auth } from "@/auth";
 import SubmitButton from "../admin/components/SubmitButton";
 import { useFormState } from "react-dom";
 
@@ -25,10 +24,6 @@ export default function Page() {
                     </div>
                     <TextInput id="password1" name="password" type="password" required />
                 </div>
-                {/* <div className="flex items-center gap-2">
-                    <Checkbox id="remember" />
-                    <Label htmlFor="remember">Remember me</Label>
-                </div> */}
                 <SubmitButton label="Login" />
                 {errorMessage && (
                     <>
