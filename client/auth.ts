@@ -10,32 +10,36 @@ export const {handlers, auth, signIn, signOut} = NextAuth({
                 password: {},
             },
             authorize: async (credentials) => {
-                let user = null;
+                try {
+                    let user = null;
 
-                const response = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL+"/auth/login", {
-                    method: 'POST',
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(credentials)
-                })
+                    const response = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL+"/auth/login", {
+                        method: 'POST',
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(credentials)
+                    })
 
-                if(!response.ok) {
-                    throw new Error("Something went wrong");
+                    if(!response.ok) {
+                        throw new Error("Something went wrong");
+                    }
+
+                    const { user: userData, token } = await response.json();
+
+                    // console.log(userData);
+                    cookies().set('user_token', token);
+
+                    if(!userData) {
+                        return null;
+                    }
+
+                    user = userData;
+
+                    return user;
+                } catch(error) {
+                    return null;
                 }
-
-                const { user: userData, token } = await response.json();
-
-                // console.log(userData);
-                cookies().set('user_token', token);
-
-                if(!userData) {
-                    throw new Error("User not found");
-                }
-
-                user = userData;
-
-                return user;
             },
         })
     ]
