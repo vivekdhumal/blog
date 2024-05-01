@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../globals.css";
-import { Sidebar, SidebarItems, SidebarItemGroup, ThemeModeScript, SidebarItem, SidebarLogo } from "flowbite-react";
-import { HiHome, HiUser } from "react-icons/hi";
+import { Sidebar, SidebarItems, SidebarItemGroup, SidebarItem, SidebarLogo, SidebarCTA } from "flowbite-react";
+import { HiArrowSmLeft, HiHome, HiUser } from "react-icons/hi";
 import { LogoutButton } from "./components/LogoutButton";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -22,7 +22,6 @@ export default function AdminLayout({
             <Sidebar aria-label="Default sidebar example" className="flex-none h-screen">
                 <SidebarLogo href="/admin" img="/favicon.ico" imgAlt="Flowbite logo">
                     Blog
-                    <LogoutButton></LogoutButton>
                 </SidebarLogo>
                 <SidebarItems>
                     <SidebarItemGroup>
@@ -39,6 +38,9 @@ export default function AdminLayout({
                             </div>
                         </SidebarItem>
                     </SidebarItemGroup>
+                    <SidebarCTA>
+                        <LogoutButton></LogoutButton>
+                    </SidebarCTA>
                 </SidebarItems>             
             </Sidebar> 
             <div className="flex-auto pt-6 px-6">
