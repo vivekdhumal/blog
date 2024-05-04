@@ -1,7 +1,5 @@
 import User from "../models/user.model.js";
-import { errorHandler } from "../utils/errorHandler.js";
 import bcrypt from "bcryptjs";
-import mongoose from "mongoose";
 
 export const getUsers = async (req, res, next) => {
   try {
